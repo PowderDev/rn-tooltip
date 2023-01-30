@@ -1,7 +1,7 @@
 //  @flow
 
 import * as React from 'react';
-import { TouchableOpacity, Modal, View, I18nManager } from 'react-native';
+import { TouchableOpacity, Modal, View, I18nManager, ModalProps } from 'react-native';
 import { ViewPropTypes as RNViewPropTypes } from 'deprecated-react-native-prop-types';
 import PropTypes from 'prop-types';
 
@@ -35,6 +35,7 @@ type Props = {
   highlightColor: string,
   toggleWrapperProps: {},
   actionType: 'press' | 'longPress' | 'none',
+  animationType: ModalProps["animationType"]
 };
 
 class Tooltip extends React.Component<Props, State> {
@@ -216,13 +217,13 @@ class Tooltip extends React.Component<Props, State> {
 
   render() {
     const { isVisible } = this.state;
-    const { onClose, withOverlay, onOpen, overlayColor } = this.props;
+    const { onClose, withOverlay, onOpen, overlayColor, animationType } = this.props;
 
     return (
       <View collapsable={false} ref={e => (this.renderedElement = e)}>
         {this.renderContent(false)}
         <Modal
-          animationType="fade"
+          animationType={animationType}
           visible={isVisible}
           transparent
           onDismiss={onClose}

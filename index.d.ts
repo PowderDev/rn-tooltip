@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleProp, ViewStyle, TouchableOpacityProps } from 'react-native';
+import { StyleProp, ViewStyle, TouchableOpacityProps, ModalProps } from 'react-native';
 
 type Props = {
   popover?: React.ReactElement<{}>;
@@ -18,6 +18,7 @@ type Props = {
   toggleWrapperProps?: TouchableOpacityProps,
   actionType: 'press' | 'longPress' | 'none',
   children: React.ReactNode
+  animationType: ModalProps["animationType"]
 };
 
 export default class Tooltip extends React.Component<Props, any> {
